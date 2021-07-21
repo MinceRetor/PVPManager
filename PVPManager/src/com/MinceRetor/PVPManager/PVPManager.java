@@ -1,7 +1,12 @@
 package com.MinceRetor.PVPManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.io.BukkitObjectOutputStream;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.zip.GZIPOutputStream;
 
 import net.milkbowl.vault.permission.Permission;
 
@@ -29,7 +34,6 @@ public class PVPManager extends JavaPlugin
 	            return true;
 	        } catch (IOException e) 
 	        {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	            return false;
 	        }

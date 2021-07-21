@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="PVPManager/src"/>
+	<classpathentry kind="lib" path="PVPManager/spigot-api-1.16.5-R0.1-20210608.042337-97-shaded.jar"/>
+	<classpathentry kind="lib" path="PVPManager/Vault.jar"/>
+	<classpathentry kind="output" path="PVPManager/bin"/>
+</classpath>
