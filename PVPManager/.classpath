@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Olek/eclipse-workspace/SpigotPVPManagerPlugin/spigot-api-1.16.5-R0.1-20210608.042337-97-shaded.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Olek/eclipse-workspace/SpigotPVPManagerPlugin/Vault.jar"/>
+	<classpathentry kind="lib" path="spigot-api-1.16.5-R0.1-20210608.042337-97-shaded.jar"/>
+	<classpathentry kind="lib" path="Vault.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

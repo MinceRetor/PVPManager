@@ -1,13 +1,7 @@
 package com.MinceRetor.PVPManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.io.BukkitObjectOutputStream;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.zip.GZIPOutputStream;
-
+import java.io.File;
 import net.milkbowl.vault.permission.Permission;
 
 public class PVPManager extends JavaPlugin
@@ -18,28 +12,9 @@ public class PVPManager extends JavaPlugin
 		Team
 	}
 	
-	private class PluginDataFile implements Serializable
-	{
-		private PVPMode pvpMode = PVPMode.Normal;
-		private boolean pvpEnabled = true;
-		
-		
-		public boolean saveData(String filePath) 
-		{
-	        try 
-	        {
-	            FileOutputStream fileOut = new FileOutputStream(filePath);
-	            GZIPOutputStream gzOut = new GZIPOutputStream(fileOut);
-	            BukkitObjectOutputStream out = new BukkitObjectOutputStream(gzOut);
-	            return true;
-	        } catch (IOException e) 
-	        {
-	            e.printStackTrace();
-	            return false;
-	        }
-	    }
-	}
+	private static String configFileName = "config.data";
 	
+
 	public static PVPMode pvpMode = PVPMode.Normal;
 	public static boolean pvpEnabled = true;
 	private static Permission perms = null;
@@ -50,11 +25,34 @@ public class PVPManager extends JavaPlugin
     	this.getCommand("pvpm").setExecutor(new CommandPVP());
     	getServer().getPluginManager().registerEvents(new PVPManagerListener(), this);
     	setupPermissions();
+    	
+    	File directory = this.getDataFolder();
+	    if (! directory.exists())
+	    {
+	        directory.mkdir();
+	    }
+    	
+    	PluginDataFile pluginData = new PluginDataFile();
+    	if(pluginData.loadData(this.getDataFolder().getPath() + "/" + configFileName))
+    	{
+    		pvpEnabled = pluginData.pvpEnabled;
+        	pvpMode = pluginData.pvpMode;
+    	}
     }
     
     @Override
     public void onDisable() 
     {
+    	File directory = this.getDataFolder();
+	    if (! directory.exists())
+	    {
+	        directory.mkdir();
+	    }
+    	
+    	PluginDataFile pluginData = new PluginDataFile();
+    	pluginData.pvpEnabled = pvpEnabled;
+    	pluginData.pvpMode = pvpMode;
+    	pluginData.saveData(this.getDataFolder().getPath() + "/" + configFileName);
     }
     
     private boolean setupPermissions() 
