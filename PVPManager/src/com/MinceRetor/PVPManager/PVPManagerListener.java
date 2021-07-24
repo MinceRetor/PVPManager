@@ -7,7 +7,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 public class PVPManagerListener implements Listener 
 {
 	@EventHandler
-    public void onPlayerJoin(EntityDamageByEntityEvent event) 
+    public void onPlayerDamage(EntityDamageByEntityEvent event) 
 	{
 		if (event.getEntity() instanceof Player && event.getDamager() instanceof Player)
 		{

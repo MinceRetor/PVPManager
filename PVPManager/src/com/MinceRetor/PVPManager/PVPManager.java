@@ -12,12 +12,10 @@ public class PVPManager extends JavaPlugin
 		Team
 	}
 	
-	private static String configFileName = "config.data";
-	
-
 	public static PVPMode pvpMode = PVPMode.Normal;
 	public static boolean pvpEnabled = true;
 	private static Permission perms = null;
+	private static String configFileName = "config.data";
 	
     @Override
     public void onEnable() 
